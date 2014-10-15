@@ -1,13 +1,23 @@
 define(function(require, exports, module) {
-    // import dependencies
-    var Engine = require('famous/core/Engine');
-    var Modifier = require('famous/core/Modifier');
-    var Transform = require('famous/core/Transform');
-    var ImageSurface = require('famous/surfaces/ImageSurface');
+  // import dependencies
+  var View = require('famous/core/View'),
+      Modifier = require('famous/core/Modifier'),
+      Transform = require('famous/core/Transform'),
+      StateModifier = require('famous/modifiers/StateModifier'),
+      ImageSurface = require('famous/surfaces/ImageSurface');
 
-    // create the main context
-    var mainContext = Engine.createContext();
+  function AppView() {
+    View.apply(this, arguments);
 
+    _createSpinner.call(this);
+  }
+
+  AppView.prototype = Object.create(View.prototype);
+  AppView.prototype.constructor = AppView;
+
+  AppView.DEFAULT_OPTIONS = {};
+
+  function _createSpinner() {
     // your app here
     var logo = new ImageSurface({
         size: [200, 200],
@@ -23,5 +33,8 @@ define(function(require, exports, module) {
         }
     });
 
-    mainContext.add(centerSpinModifier).add(logo);
+    this.add(centerSpinModifier).add(logo);
+  }
+
+  module.exports = AppView;
 });
