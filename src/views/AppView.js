@@ -4,12 +4,15 @@ define(function(require, exports, module) {
       Modifier = require('famous/core/Modifier'),
       Transform = require('famous/core/Transform'),
       StateModifier = require('famous/modifiers/StateModifier'),
-      ImageSurface = require('famous/surfaces/ImageSurface');
+      ImageSurface = require('famous/surfaces/ImageSurface'),
+      BookContent = require('data/content');
 
   function AppView() {
     View.apply(this, arguments);
 
     _createSpinner.call(this);
+
+    console.log(BookContent);
   }
 
   AppView.prototype = Object.create(View.prototype);
@@ -34,6 +37,10 @@ define(function(require, exports, module) {
     });
 
     this.add(centerSpinModifier).add(logo);
+  }
+
+  function _logContent(data) {
+    console.log(data);
   }
 
   module.exports = AppView;
