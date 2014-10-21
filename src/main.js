@@ -5,7 +5,12 @@ define(function(require, exports, module) {
 
     // create the main context
     var mainContext = Engine.createContext(),
-        appView = new AppView();
+        contextSize = mainContext.getSize(),
+        appView = new AppView({
+          size: contextSize,
+          structure_url: "src/data/structure.json",
+          content_url: "src/data/content.json"
+        });
 
     mainContext.add(appView);
 });

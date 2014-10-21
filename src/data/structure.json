@@ -1,6 +1,20 @@
 {
   "1": {
     "title": "French Stories",
-    "pages": [1, 2, 3]
+    "pages": [
+      {
+        "title": "Zadig The Babylonian",
+        "author": "Francois Marie Arouet de Voltaire",
+        "filename": "zadig.html"
+      },{
+        "title": "Abandoned",
+        "author": "Guy de Maupassant",
+        "filename": "guy.html"
+      },{
+        "title": "The Woman And The Cat",
+        "author": "Marcel Prevost",
+        "filename": "woman-and-cat.html"
+      }
+    ]
   }
 }

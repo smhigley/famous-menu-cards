@@ -7,3 +7,7 @@ html {
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
 }
+
+.menu-bg {
+  background: url(../images/tile.png);
+}

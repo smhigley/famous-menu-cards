@@ -5,20 +5,31 @@ define(function(require, exports, module) {
       Transform = require('famous/core/Transform'),
       StateModifier = require('famous/modifiers/StateModifier'),
       ImageSurface = require('famous/surfaces/ImageSurface'),
-      BookContent = require('data/content');
+      Surface = require('famous/core/Surface'),
+      Utility = require('famous/utilities/Utility'),
+      MenuView = require('views/MenuView');
 
   function AppView() {
     View.apply(this, arguments);
 
-    _createSpinner.call(this);
+    var self = this;
 
-    console.log(BookContent);
+    //_createSpinner.call(this);
+
+    Utility.loadURL("src/data/structure.json", function(data) {
+      _createMenu.call(self, data);
+    });
+
   }
 
   AppView.prototype = Object.create(View.prototype);
   AppView.prototype.constructor = AppView;
 
-  AppView.DEFAULT_OPTIONS = {};
+  AppView.DEFAULT_OPTIONS = {
+    size: [undefined, undefined],
+    structure_url: null,
+    content_url: null
+  };
 
   function _createSpinner() {
     // your app here
@@ -39,8 +50,15 @@ define(function(require, exports, module) {
     this.add(centerSpinModifier).add(logo);
   }
 
-  function _logContent(data) {
-    console.log(data);
+  function _createMenu(data) {
+    data = JSON.parse(data);
+
+    // menu view
+    var menuView = new MenuView({
+      sections: data,
+      size: this.options.size
+    });
+    this.add(menuView);
   }
 
   module.exports = AppView;
