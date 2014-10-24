@@ -11,3 +11,7 @@ html {
 .menu-bg {
   background: url(../images/tile.png);
 }
+
+.card-bg {
+  background-color: red;
+}

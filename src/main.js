@@ -12,5 +12,7 @@ define(function(require, exports, module) {
           content_url: "src/data/content.json"
         });
 
+    console.log("context size is", contextSize, appView.options.size);
+
     mainContext.add(appView);
 });

@@ -7,7 +7,7 @@ define(function(require, exports, module) {
       ImageSurface = require('famous/surfaces/ImageSurface'),
       Surface = require('famous/core/Surface'),
       Utility = require('famous/utilities/Utility'),
-      MenuView = require('views/MenuView');
+      MenuView = require('views/menu/MenuView');
 
   function AppView() {
     View.apply(this, arguments);
@@ -53,10 +53,12 @@ define(function(require, exports, module) {
   function _createMenu(data) {
     data = JSON.parse(data);
 
+    console.log("menu size is appview is", this.options.size);
+
     // menu view
     var menuView = new MenuView({
       sections: data,
-      size: this.options.size
+      screenSize: this.options.size
     });
     this.add(menuView);
   }

@@ -3,7 +3,8 @@ define(function(require, exports, module) {
   var View = require('famous/core/View'),
       Surface = require('famous/core/Surface'),
       Transform = require('famous/core/Transform'),
-      StateModifier = require('famous/modifiers/StateModifier');
+      StateModifier = require('famous/modifiers/StateModifier'),
+      CardView = require('views/menu/CardView');
 
   function MenuView() {
     View.apply(this, arguments);
@@ -11,7 +12,7 @@ define(function(require, exports, module) {
     this.rootModifier = new StateModifier({
       origin: [0.5, 0],
       align: [0.5, 0],
-      size: this.options.size
+      size: this.options.screenSize
     });
 
     this.mainNode = this.add(this.rootModifier);
@@ -25,8 +26,9 @@ define(function(require, exports, module) {
   MenuView.prototype.constructor = MenuView;
 
   MenuView.DEFAULT_OPTIONS = {
-    pages: null,
-    size: [undefined, undefined]
+    sections: [],
+    screenSize: [undefined, undefined],
+    cardSize: [350, 400]
   };
 
   function _addBG() {
@@ -39,10 +41,29 @@ define(function(require, exports, module) {
   }
 
   function _addCards() {
-    for (var id in this.options.pages) {
-      console.log(this.options.pages[id]);
-      // create a card
+    var grid_cols = Math.floor(this.options.screenSize/this.options.cardSize),
+        grid_rows = Math.ceil(this.options.sections.length/grid_cols);
+
+    this.cards = [];
+
+    for (var i = 0; i < this.options.sections.length; i++) {
+      console.log(this.options.sections[i]);
+      var col = i % grid_cols,
+          row = Math.floor(i/grid_cols);
+      this.cards.push(new CardView({
+        size: this.options.cardSize,
+        screenSize: this.options.screenSize,
+        position: [col, row],
+        pages: this.options.sections[i].pages
+      }));
+      this.cards[i].pipe(this._eventInput);
+
+      this.mainNode.add(this.cards[i]);
     };
+  }
+
+  function _addPage(order, title){
+    // will need to make this a page view
   }
 
   module.exports = MenuView;
