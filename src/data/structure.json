@@ -1,6 +1,6 @@
 [
   {
-    "title": "French Stories",
+    "title": "Stories from France",
     "pages": [
       {
         "title": "Zadig The Babylonian",
@@ -15,6 +15,14 @@
         "author": "Marcel Prevost",
         "filename": "woman-and-cat.html"
       }
+    ]
+  },{
+    "title": "Stories from Germany",
+    "pages": [
+    ]
+  },{
+    "title": "Stories from Spain",
+    "pages": [
     ]
   }
 ]

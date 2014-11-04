@@ -9,7 +9,8 @@ define(function(require, exports, module) {
         appView = new AppView({
           size: contextSize,
           structure_url: "src/data/structure.json",
-          content_url: "src/data/content.json"
+          content_url: "src/data/content.json",
+          menuPadding: 10
         });
 
     console.log("context size is", contextSize, appView.options.size);

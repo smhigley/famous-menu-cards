@@ -28,7 +28,8 @@ define(function(require, exports, module) {
   AppView.DEFAULT_OPTIONS = {
     size: [undefined, undefined],
     structure_url: null,
-    content_url: null
+    content_url: null,
+    menuPadding: 10
   };
 
   function _createSpinner() {
@@ -58,7 +59,8 @@ define(function(require, exports, module) {
     // menu view
     var menuView = new MenuView({
       sections: data,
-      screenSize: this.options.size
+      screenSize: this.options.size,
+      padding: this.options.menuPadding
     });
     this.add(menuView);
   }

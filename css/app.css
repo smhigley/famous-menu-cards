@@ -13,5 +13,13 @@ html {
 }
 
 .card-bg {
-  background-color: red;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card-title {
+  padding: 10px;
+  font-size: 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
 }

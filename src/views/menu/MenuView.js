@@ -28,11 +28,11 @@ define(function(require, exports, module) {
   MenuView.DEFAULT_OPTIONS = {
     sections: [],
     screenSize: [undefined, undefined],
-    cardSize: [350, 400]
+    cardSize: [350, 400],
+    padding: 10
   };
 
   function _addBG() {
-    console.log("view size is", this.options.size);
     var bg = new Surface({
       classes: ['menu-bg']
     });
@@ -41,19 +41,21 @@ define(function(require, exports, module) {
   }
 
   function _addCards() {
-    var grid_cols = Math.floor(this.options.screenSize/this.options.cardSize),
+    var grid_cols = Math.floor(this.options.screenSize[0]/this.options.cardSize[0]),
         grid_rows = Math.ceil(this.options.sections.length/grid_cols);
 
     this.cards = [];
 
     for (var i = 0; i < this.options.sections.length; i++) {
-      console.log(this.options.sections[i]);
       var col = i % grid_cols,
           row = Math.floor(i/grid_cols);
+
       this.cards.push(new CardView({
-        size: this.options.cardSize,
         screenSize: this.options.screenSize,
+        size: this.options.cardSize,
+        padding: this.options.padding,
         position: [col, row],
+        title: this.options.sections[i].title,
         pages: this.options.sections[i].pages
       }));
       this.cards[i].pipe(this._eventInput);

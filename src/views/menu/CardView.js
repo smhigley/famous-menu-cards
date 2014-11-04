@@ -8,13 +8,14 @@ define(function(require, exports, module) {
   function CardView() {
     View.apply(this, arguments);
 
-    console.log("card view");
+    this.offsetLeft = this.options.position[0] * this.options.size[0] + this.options.padding;
+    this.offsetTop = this.options.position[1] * this.options.size[1] + this.options.padding;
 
     this.rootModifier = new StateModifier({
       origin: [0, 0],
       align: [0, 0],
-      x: this.options.position[0] * this.options.size[0],
-      y: this.options.position[1] * this.options.size[1]
+      size: [this.options.size[0] - this.options.padding*2, this.options.size[1] - this.options.padding*2],
+      transform: Transform.translate(this.offsetLeft, this.offsetTop, 0)
     });
 
     this.cardNode = this.add(this.rootModifier);
@@ -27,18 +28,27 @@ define(function(require, exports, module) {
   CardView.prototype.constructor = CardView;
 
   CardView.DEFAULT_OPTIONS = {
-    size: [undefined, undefined],
     screenSize: [undefined, undefined],
+    size: [undefined, undefined],
+    padding: 10,
     position: null,
+    title: "",
     pages: null
   };
 
   function _createCard() {
     var bg = new Surface({
-      size: this.options.size,
       classes: ['card-bg']
     });
+    var title = new Surface({
+      content: this.options.title,
+      classes: ['card-title'],
+      origin: [0.5, 0],
+      align: [0.5, 0],
+      size: [undefined, 50]
+    })
     this.cardNode.add(bg);
+    this.cardNode.add(title);
   }
 
   module.exports = CardView;
