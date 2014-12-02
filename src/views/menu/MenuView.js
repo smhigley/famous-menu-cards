@@ -55,17 +55,15 @@ define(function(require, exports, module) {
         size: this.options.cardSize,
         padding: this.options.padding,
         position: [col, row],
+        order: i,
         title: this.options.sections[i].title,
         pages: this.options.sections[i].pages
       }));
       this.cards[i].pipe(this._eventInput);
 
       this.mainNode.add(this.cards[i]);
+      this.cards[i].animateIn();
     };
-  }
-
-  function _addPage(order, title){
-    // will need to make this a page view
   }
 
   module.exports = MenuView;

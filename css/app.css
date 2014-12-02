@@ -23,3 +23,16 @@ html {
   font-weight: bold;
   text-align: center;
 }
+
+.page-bg {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 3px solid #ccc;
+}
+
+.page-content {
+  text-align: center;
+  line-height: 50px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
