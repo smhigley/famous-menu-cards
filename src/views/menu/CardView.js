@@ -54,7 +54,7 @@ define(function(require, exports, module) {
       classes: ['card-bg']
     });
     var title = new Surface({
-      content: this.options.title,
+      content: "Stories <span>from</span> " + this.options.title,
       classes: ['card-title'],
       origin: [0.5, 0],
       align: [0.5, 0],

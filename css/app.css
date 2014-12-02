@@ -1,11 +1,12 @@
-html {
-    background-color: #fff;
-    color: #000;
+html, body {
+  background-color: #fff;
+  color: #000;
+  font-family: Garamond, Georgia, serif;
 }
 
 .double-sided {
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 
 .menu-bg {
@@ -18,21 +19,27 @@ html {
 
 .card-title {
   padding: 10px;
-  font-size: 20px;
-  font-family: Helvetica, sans-serif;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
 }
+.card-title span {
+  font-style: italic;
+  font-weight: normal;
+}
 
 .page-bg {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 3px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 3px solid #0c4863;
+  background-color: #207791;
+  border-radius: 4px;
 }
 
 .page-content {
   text-align: center;
+  font-size: 18px;
   line-height: 50px;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: bold;
+  color: #fff;
   cursor: pointer;
 }
